@@ -39,6 +39,17 @@ This project is a web application built using React for the frontend and Node.js
 
 Create a `.env` file in the `server` directory and add the following variables:
 
+```
+MONGO_URI=mongodb://localhost:27017/spotcheck
+JWT_SECRET=your_jwt_secret
+```
+
+### User Credentials
+
+You can use the following credentials to log in to the application:
+
+- **Email**: `test@sp.com`
+- **Password**: `123456`
 
 ### Running the Application
 
@@ -75,3 +86,51 @@ Create a `.env` file in the `server` directory and add the following variables:
 4. **Access the application**:
 
    Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.
+
+### Seed Purchases
+
+To create sample purchases in the database, you can use the `seed-purchases.js` script. Follow these steps:
+
+1. Navigate to the root of your project:
+
+   ```bash
+   cd my-app
+   ```
+
+2. Run the seed script:
+
+   ```bash
+   node seed-purchases.js
+   ```
+
+   This will generate 100 random purchase entries in the `purchases` collection of your MongoDB database.
+
+### Available Scripts
+
+In the `webapp` directory, you can run:
+
+- `npm start`: Runs the app in development mode.
+- `npm test`: Launches the test runner.
+- `npm run build`: Builds the app for production.
+- `npm run eject`: Ejects the configuration (use with caution).
+
+In the `server` directory, you can run:
+
+- `npm run dev`: Starts the server in development mode with nodemon.
+- `npm run build`: Compiles TypeScript files.
+- `npm start`: Starts the server in production mode.
+
+## Features
+
+- User authentication with JWT
+- CRUD operations for purchases
+- Responsive design using Tailwind CSS
+- Real-time data visualization with Recharts
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request for any enhancements or bug fixes.
+
+## License
+
+This project is licensed under the MIT License.
