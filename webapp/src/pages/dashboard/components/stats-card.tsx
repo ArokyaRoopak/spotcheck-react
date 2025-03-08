@@ -35,13 +35,13 @@ const StatsCard: React.FC<StatsCardProps> = ({
         <Text className="text-xl sm:text-3xl font-bold text-gray-900 font-noto">{`$ ${data[
           data.length - 1
         ].toLocaleString()}`}</Text>
-        <div className="hidden sm:flex gap-1 items-center min-w-max">
+        <div className="hidden sm:flex gap-1 items-center min-w-max ">
           <Icon
             icon={IconType.TRENDING_UP}
             size="22"
             viewBox="0 0 28 24"
             color={`${
-              todaysPerformanceVal > 0 ? "" : "rotate-90  inverse"
+              todaysPerformanceVal > 0 ? "" : "rotate-[80deg]  "
             } stroke-primary stroke-2`}
           />
           <Text className="flex text-sm font-medium gap-1 text-primary">

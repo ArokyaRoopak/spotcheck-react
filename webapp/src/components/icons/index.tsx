@@ -4,6 +4,7 @@ import { DashboardIcon } from "./svgs/dasboard";
 import { ProductIcon } from "./svgs/product";
 import { TrendingDown } from "./svgs/trending-down";
 import { TrendingUp } from "./svgs/trending-up";
+import { ChevronUp } from "./svgs/chevron-up";
 
 const getIcon = ({
   icon,
@@ -50,6 +51,16 @@ const getIcon = ({
     case IconType.TRENDING_UP:
       return (
         <TrendingUp
+          color={color}
+          size={size}
+          viewBox={viewBox}
+          style={style}
+          onClick={onClick}
+        />
+      );
+    case IconType.CHEVRON_UP:
+      return (
+        <ChevronUp
           color={color}
           size={size}
           viewBox={viewBox}

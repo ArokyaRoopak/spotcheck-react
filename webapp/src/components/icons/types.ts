@@ -3,6 +3,7 @@ export enum IconType {
   PRODUCT,
   TRENDING_DOWN,
   TRENDING_UP,
+  CHEVRON_UP,
 }
 
 export interface IconProps {

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { PieChart, Pie, Cell, Tooltip } from "recharts";
 import Text from "../../../components/text";
+import CustomDropdown from "../../../components/custom-dropdown";
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#8884d8"];
 
@@ -13,12 +14,11 @@ const categories = [
   { name: "Category E" },
 ];
 
-// Generate random sales data for 30 days
 const data = Array.from({ length: 30 }, (v, i) => {
   const date = new Date();
   date.setDate(date.getDate() - i);
   const dailyData = categories.map((category) => {
-    const amount = Math.floor(Math.random() * 5000) + 1000; // Random sales amount between 1000 and 6000
+    const amount = Math.floor(Math.random() * 5000) + 1000;
     return {
       category: category.name,
       amount: amount,
@@ -30,7 +30,7 @@ const data = Array.from({ length: 30 }, (v, i) => {
     date: date.toISOString().split("T")[0],
     data: dailyData,
   };
-}).reverse(); // Reverse to have the oldest date first
+}).reverse();
 
 const SalesByCategoryCard: React.FC = () => {
   const [timeFrame, setTimeFrame] = React.useState("week");
@@ -82,34 +82,31 @@ const SalesByCategoryCard: React.FC = () => {
   }, [timeFrame]);
 
   return (
-    <div className="bg-white shadow-md rounded-2xl p-4 sm:p-7 flex flex-col  sm:gap-4 w-full md:max-w-[50%]">
+    <div className="bg-white shadow-md rounded-2xl  p-4 sm:p-7 flex flex-col gap-2 sm:gap-4 w-full md:max-w-[50%]">
       <div className="flex justify-between items-center">
-        <Text className=" text-base sm:text-xl text-black font-medium">
+        <Text className=" text-base lg:text-xl text-black font-medium">
           Sales by Category
         </Text>
-        <select
-          value={timeFrame}
-          onChange={(e) => setTimeFrame(e.target.value)}
-          className=" border rounded-lg px-1.5 py-0.5 sm:px-3 sm:py-1 mx-1 text-xs sm:text-sm text-gray-700"
-        >
-          <option value="week">Week</option>
-          <option value="month">Month</option>
-        </select>
+        <CustomDropdown
+          options={["week", "month"]}
+          selectedOption={timeFrame}
+          onOptionSelect={setTimeFrame}
+        />
       </div>
-      <div className="flex gap-2 justify-between items-center w-full">
+      <div className="flex gap-2 justify-between items-center w-[90%] xl:w-full">
         <div className="w-full xl:w-1/2">
           <PieChart
             width={280}
             height={240}
             style={{ width: "100%", height: "110%" }}
-            className="xl:-ml-11"
+            className="xl:-ml-4"
           >
             <Pie
               data={chartData}
               cx="50%"
               cy="50%"
-              innerRadius={60}
-              outerRadius={100}
+              innerRadius={85}
+              outerRadius={120}
               paddingAngle={1}
               dataKey="amount"
             >

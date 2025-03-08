@@ -30,9 +30,9 @@ const Sidebar: React.FC<{
       )}
 
       <div
-        className={`fixed sm:relative top-0 left-0 h-full flex flex-col gap-2 sm:gap-3 rounded-2xl mt-3 sm:m-0 max-h-[calc(100vh-24px)] bg-primary text-white py-4 transition-all duration-300 z-50 ${
+        className={`fixed sm:relative top-0 left-0 h-full flex flex-col gap-2 sm:gap-3 rounded-3xl mt-3 sm:m-0 max-h-[calc(100vh-34px)] bg-primary text-white py-4 transition-all duration-300 z-50 ${
           isOpen
-            ? "w-60 translate-x-0"
+            ? " w-64 translate-x-0"
             : isMobile
             ? "-translate-x-full"
             : "w-16"

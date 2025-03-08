@@ -11,7 +11,7 @@ const Header: React.FC<{ onToggleSideBar: () => void }> = ({
     (currentPage.split("/").pop() || "Dashboard").slice(1);
 
   return (
-    <div className=" min-h-[60px] h-[60px]  sm:min-h-[80px] sm:h-[80px]  w-full flex justify-between items-center sm:pr-14 shadow-sm">
+    <div className=" min-h-[60px] h-[60px]  sm:min-h-[100px] sm:h-[100px]  w-full flex justify-between items-center sm:pr-14 shadow-sm">
       <span className="block sm:hidden" onClick={onToggleSideBar}>
         <Text className=" text-black font-bold font-noto  text-3xl">SP</Text>
       </span>
