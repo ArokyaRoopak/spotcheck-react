@@ -72,7 +72,7 @@ const LoginPage: React.FC = () => {
       </div>
 
       <div className="flex lg:bg-primary h-full lg:h-[95vh] mx-5 rounded-2xl flex-grow items-center justify-center w-full lg:w-1/2 drop-shadow-2xl hover:drop-shadow-3xl">
-        <div className="flex flex-col gap-6 lg:gap-4 w-80 sm:w-96 bg-white/20 lg:border lg:border-gray-500 shadow-[12px_17px_51px_rgba(0,0,0,0.22)] hover:shadow-[16px_20px_40px_rgba(0,0,0,0.32)] rounded-2xl text-center p-6 transition-all cursor-pointer hover:border-white hover:border-2 hover:scale-105 active:scale-95 active:rotate-1">
+        <div className="flex flex-col gap-6 lg:gap-4 w-80 sm:w-96 bg-white/80 lg:bg-white/20 lg:border lg:border-gray-500 shadow-[12px_17px_51px_rgba(0,0,0,0.22)] hover:shadow-[16px_20px_40px_rgba(0,0,0,0.32)] rounded-2xl text-center p-6 transition-all cursor-pointer hover:border-white hover:border-2 hover:scale-105 active:scale-95 active:rotate-1">
           <h2 className="text-4xl font-noto font-bold text-black lg:text-white mb-4">
             Login
           </h2>
@@ -112,7 +112,7 @@ const LoginPage: React.FC = () => {
             )}
           </form>
 
-          <p className="text-gray-700 text-sm mt-4 cursor-pointer hover:text-gray-100 transition">
+          <p className="text-gray-700 text-sm mt-4 cursor-pointer hover:text-gray-900 lg:hover:text-gray-100 transition">
             Forgot password?
           </p>
         </div>

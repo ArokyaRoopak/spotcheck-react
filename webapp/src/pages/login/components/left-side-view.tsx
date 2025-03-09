@@ -61,7 +61,7 @@ const LeftSideView = () => {
             key={word?.label}
             className={`h-full flex-1 w-max   overflow-hidden cursor-pointer rounded-2xl border-4 border-[#ff5a91] flex flex-col justify-center items-center transition-all duration-500 ${
               index === activeIndex
-                ? " w-[400px]  bg-[#ff568e]"
+                ? " w-[430px]  bg-[#ff568e]"
                 : " max-w-[60px]"
             }`}
           >
