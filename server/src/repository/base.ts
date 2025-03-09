@@ -26,7 +26,7 @@ export class BaseRepository<T> {
     const results = await this.entity
       .find(query)
       .lean()
-      .sort(sort || { createdAt: -1 }) // Default sorting: Newest first
+      .sort(sort || { createdAt: -1 })
       .skip((pageNumber - 1) * limitNumber)
       .limit(limitNumber)
       .exec();
