@@ -87,23 +87,23 @@ You can use the following credentials to log in to the application:
 
    Open your browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.
 
-### Seed Purchases
+### Seed 
 
-To create sample purchases in the database, you can use the `seed-purchases.js` script. Follow these steps:
+To create sample purchases and   in the database, you can use the `seed.js` script. Follow these steps:
 
 1. Navigate to the root of your project:
 
    ```bash
-   cd my-app
+   cd webapp
    ```
 
 2. Run the seed script:
 
    ```bash
-   node seed-purchases.js
+   node seed.js
    ```
 
-   This will generate 100 random purchase entries in the `purchases` collection of your MongoDB database.
+   This will generate 100 random purchase entries in the `purchases` collection and 1 user in the `users`  collection of your MongoDB database.
 
 ### Available Scripts
 

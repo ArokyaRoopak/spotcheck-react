@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import Icon from "./icons";
 import { IconType } from "./icons/types";
 
@@ -14,14 +14,31 @@ const CustomDropdown: React.FC<CustomDropdownProps> = ({
   onOptionSelect,
 }) => {
   const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleOptionClick = (value: string) => {
     onOptionSelect(value);
     setIsDropdownOpen(false);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [dropdownRef]);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <div
         className="border flex gap-2 items-center rounded-lg px-3 py-1 mx-1 text-xs sm:text-sm text-gray-700 transition-all duration-200 hover:bg-slate-200 cursor-pointer"
         onClick={() => setIsDropdownOpen(!isDropdownOpen)}

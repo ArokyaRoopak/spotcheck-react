@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Text from "../../../../components/text";
 import UserInfoCard from "./components/user-info";
 
@@ -6,12 +6,13 @@ const Header: React.FC<{ onToggleSideBar: () => void }> = ({
   onToggleSideBar,
 }) => {
   const currentPage = window.location.pathname;
-  const currentPageTitle =
-    (currentPage.split("/").pop() || "Dashboard").charAt(0).toUpperCase() +
-    (currentPage.split("/").pop() || "Dashboard").slice(1);
+  const currentPageTitle = useMemo(() => {
+    const path = currentPage.split("/").pop() || "Dashboard";
+    return path.charAt(0).toUpperCase() + path.slice(1);
+  }, [currentPage]);
 
   return (
-    <div className=" min-h-[60px] h-[60px]  sm:min-h-[100px] sm:h-[100px]  w-full flex justify-between items-center sm:pr-14 shadow-sm">
+    <div className=" min-h-[60px] h-[60px] lg:min-h-[80px] lg:h-[80px]  lg:pt-6   w-full flex justify-between items-center sm:pr-14 shadow-sm">
       <span className="block sm:hidden" onClick={onToggleSideBar}>
         <Text className=" text-black font-bold font-noto  text-3xl">SP</Text>
       </span>

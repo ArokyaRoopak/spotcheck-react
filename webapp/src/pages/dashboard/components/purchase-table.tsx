@@ -1,17 +1,39 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { usePurchases } from "../../../api/hooks/product/use-get-products";
 import { IPurchase } from "../../../api/service/product/get";
 import CustomDropdown from "../../../components/custom-dropdown";
+import CustomInput from "../../../components/custom-input";
+import debounce from "lodash/debounce";
 
+const TableHeader = [
+  "Username",
+  "Product Name",
+  "Count",
+  "Amount",
+  "Status",
+  "Date",
+];
+
+const DataCellClassName = " px-2 sm:px-4 py-1 sm:py-2 rounded-md";
 const PurchaseTable = () => {
   const { purchases, pagination, loading, fetchPurchases } = usePurchases();
   const [search, setSearch] = useState("");
   const [pageSize, setPageSize] = useState(10);
   const [page, setPage] = useState(1);
 
+  const fetchPurchasesDebounced = useCallback(
+    debounce((searchQuery, pageNum, limit) => {
+      fetchPurchases({ username: searchQuery, page: pageNum, limit });
+    }, 300),
+    [fetchPurchases]
+  );
+  const handleSearchChange = useCallback((value: string) => {
+    setSearch(value);
+  }, []);
+
   useEffect(() => {
-    fetchPurchases({ username: search, page, limit: pageSize });
-  }, [search, page, pageSize]);
+    fetchPurchasesDebounced(search, page, pageSize);
+  }, [search, page, pageSize, fetchPurchasesDebounced]);
 
   return (
     <div className="bg-white shadow-md rounded-2xl p-4 sm:p-7">
@@ -20,24 +42,13 @@ const PurchaseTable = () => {
           Purchases ({pagination.total})
         </h2>
         <div className="flex flex-col sm:flex-row gap-2">
-          <input
+          <CustomInput
             type="text"
             placeholder="Search by username..."
             value={search}
-            onChange={(e) => setSearch(e.target.value)}
+            onChange={handleSearchChange}
             className="border rounded-lg px-3 py-1 text-sm"
           />
-          {/* <select
-            value={pageSize}
-            onChange={(e) => setPageSize(Number(e.target.value))}
-            className="border rounded-lg px-3 py-1 text-sm"
-          >
-            {[5, 10, 20, 50].map((size) => (
-              <option key={size} value={size}>
-                {size} per page
-              </option>
-            ))}
-          </select> */}
           <CustomDropdown
             options={["5", "10", "20", "50"]}
             selectedOption={pageSize.toString()}
@@ -50,14 +61,7 @@ const PurchaseTable = () => {
         <table className="w-full  border border-separate rounded-md border-gray-300 ">
           <thead className="bg-cyan-800/20 rounded-md">
             <tr>
-              {[
-                "Username",
-                "Product Name",
-                "Count",
-                "Amount",
-                "Status",
-                "Date",
-              ].map((col) => (
+              {TableHeader.map((col) => (
                 <th
                   key={col}
                   className=" border-green-500 px-4 py-2 text-left font-medium rounded-md text-gray-700 "
@@ -90,25 +94,25 @@ const PurchaseTable = () => {
                 <tr
                   key={purchase.id}
                   className={`hover:bg-gray-100 h-6 sm:h-10 rounded-md text-sm sm:text-base ${
-                    index % 2 === 0 ? "bg-gray-100" : "bg-white"
+                    index % 2 === 0 ? "bg-gray-100" : "bg-white "
                   }`}
                 >
-                  <td className=" px-2 sm:px-4 py-1 sm:py-2 rounded-md">
+                  <td className={`${DataCellClassName}`}>
                     {purchase.username}
                   </td>
-                  <td className=" px-2 sm:px-4 py-1 sm:py-2 rounded-md">
+                  <td className={`${DataCellClassName}`}>
                     {purchase.productName}
                   </td>
-                  <td className=" px-2 sm:px-4 py-1 sm:py-2 rounded-md">
+                  <td className={`${DataCellClassName}`}>
                     {purchase.productCount}
                   </td>
-                  <td className=" px-2 sm:px-4 py-1 sm:py-2 rounded-md">
+                  <td className={`${DataCellClassName}`}>
                     ${purchase.purchaseAmount}
                   </td>
-                  <td className=" px-2 sm:px-4 py-1 sm:py-2 rounded-md">
+                  <td className={`${DataCellClassName}`}>
                     {purchase.deliveryStatus}
                   </td>
-                  <td className=" px-2 sm:px-4 py-1 sm:py-2 rounded-md">
+                  <td className={`${DataCellClassName}`}>
                     {new Date(purchase.createdAt).toLocaleDateString()}
                   </td>
                 </tr>

@@ -11,7 +11,11 @@ const Home = () => {
   const [showSideBar, setShowSideBar] = useState(getStoredSideBarStatus());
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Detect screen size change
+  const outlet = useOutlet();
+
+  // as both the useffects below, server different purpose, I have them as separate
+  // this will help in maintaining the code more readable
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
@@ -23,8 +27,6 @@ const Home = () => {
     setShowWelcome(true);
     return () => clearTimeout(welcomeTimeout);
   }, []);
-
-  const outlet = useOutlet();
 
   const handleSideBarToggle = useCallback(() => {
     setShowSideBar((prev) => !prev);

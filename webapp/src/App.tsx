@@ -2,7 +2,7 @@ import "./App.css";
 
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import LoginPage from "./pages/landing";
+import LoginPage from "./pages/login";
 import { AuthProvider } from "./context/AuthContext";
 import Home from "./pages/home";
 import ProtectedRoute from "./components/ProtectedRoute";

@@ -38,7 +38,7 @@ const Sidebar: React.FC<{
             : "w-16"
         }`}
       >
-        <div className="py-2 px-4">
+        <div className="py-2 px-4" onClick={toggleSidebar}>
           <Text className="font-noto text-3xl text-white font-bold">SP</Text>
         </div>
         <span className="px-4" onClick={toggleSidebar}>

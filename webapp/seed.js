@@ -55,5 +55,29 @@ const generatePurchases = async () => {
   }
 };
 
-// Run the function
+const generateUser = async () => {
+  try {
+    const client = await connectDB();
+    const db = client.db();
+    const usersCollection = db.collection("users");
+
+    const user = {
+      name: "Arokya Roopak",
+      email: "roopak@sp.com",
+      password: "123456",
+      role: "admin",
+    };
+
+    await usersCollection.insertOne(user);
+    console.log("User Added to MongoDB");
+
+    client.close();
+    process.exit(0);
+  } catch (error) {
+    console.error("Failed to Insert User:", error);
+    process.exit(1);
+  }
+};
+
 generatePurchases();
+generateUser();
