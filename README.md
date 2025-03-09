@@ -89,7 +89,7 @@ You can use the following credentials to log in to the application:
 
 ### Seed 
 
-To create sample purchases and   in the database, you can use the `seed.js` script. Follow these steps:
+To create sample purchases and users in the database, you can use the `seed.js` script. Follow these steps:
 
 1. Navigate to the root of your project:
 
