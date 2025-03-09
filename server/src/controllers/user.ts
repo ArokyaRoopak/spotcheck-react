@@ -2,6 +2,7 @@ import { NextFunction, Request, RequestHandler, Response } from "express";
 import { UserRepository } from "../repository/user";
 import jwt from "jsonwebtoken";
 
+// we should create a global singleton, but for I have let it be
 const UserRepo = new UserRepository();
 
 export const getUsers = async (req: Request, res: Response) => {
