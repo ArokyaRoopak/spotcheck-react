@@ -21,6 +21,7 @@ export const verify = async (
 ) => {
   try {
     console.log(`verify`);
+
     const token = req.headers.authorization?.split(" ")[1];
     console.log(`token`, token);
     if (!token) {
@@ -30,6 +31,7 @@ export const verify = async (
     const decoded = jwt.verify(token, process.env.JWT_SECRET ?? "SECRET") as {
       id: string;
     };
+
     const user = await UserRepo.findOne({ _id: decoded.id });
     if (!user) {
       res.status(401).json({ error: "User not found" });

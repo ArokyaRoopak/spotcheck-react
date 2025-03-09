@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import { useVerify } from "../api/hooks/auth/use-verify";
-import { useNavigate } from "react-router-dom";
 
 export interface IUser {
   name: string;
@@ -25,7 +24,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [user, setUser] = useState<IUser>();
   const { verifyUser } = useVerify();
 
