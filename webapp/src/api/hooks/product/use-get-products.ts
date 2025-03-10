@@ -32,6 +32,7 @@ export function usePurchases() {
       setLoading(true);
       setError(undefined);
       const { response, error } = await getPurchases(filters);
+      // await new Promise((resolve) => setTimeout(resolve, 2000));
       setLoading(false);
 
       if (error) {

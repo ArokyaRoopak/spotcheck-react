@@ -44,8 +44,14 @@ const Home = () => {
         <div className="w-full h-full overflow-auto">{outlet}</div>
       </div>
       {showWelcome && (
-        <div className="absolute bottom-0 right-0 popup">
-          Welcome to the Dashboard!
+        <div
+          className="fixed bottom-4 right-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white 
+          px-6 py-3 rounded-lg shadow-lg flex items-center justify-center 
+          animate-fade-in-out z-50"
+        >
+          <span className="text-lg font-semibold">
+            Welcome to the Dashboard!
+          </span>
         </div>
       )}
     </div>

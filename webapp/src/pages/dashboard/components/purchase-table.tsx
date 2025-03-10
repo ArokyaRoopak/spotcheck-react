@@ -24,7 +24,7 @@ const PurchaseTable = () => {
   const fetchPurchasesDebounced = useCallback(
     debounce((searchQuery, pageNum, limit) => {
       fetchPurchases({ username: searchQuery, page: pageNum, limit });
-    }, 300),
+    }, 200),
     [fetchPurchases]
   );
   const handleSearchChange = useCallback((value: string) => {
@@ -72,18 +72,7 @@ const PurchaseTable = () => {
             </tr>
           </thead>
           <tbody className="min-h-[200px]">
-            {loading ? (
-              Array.from({ length: pageSize }).map((_, index) => (
-                <tr key={index} className="h-6 sm:h-10  rounded-md">
-                  <td
-                    colSpan={6}
-                    className="text-center border px-4 py-2 animate-pulse "
-                  >
-                    <div className="shimmer-placeholder" />
-                  </td>
-                </tr>
-              ))
-            ) : purchases.length === 0 ? (
+            {purchases.length === 0 && !loading ? (
               <tr>
                 <td colSpan={6} className="text-center py-4">
                   No purchases found.
@@ -94,30 +83,37 @@ const PurchaseTable = () => {
                 <tr
                   key={purchase.id}
                   className={`hover:bg-gray-100 h-6 sm:h-10 rounded-md text-sm sm:text-base ${
-                    index % 2 === 0 ? "bg-gray-100" : "bg-white "
+                    index % 2 === 0 ? "bg-gray-100" : "bg-white"
                   }`}
                 >
-                  <td className={`${DataCellClassName}`}>
+                  <td className={`${DataCellClassName} w-1/4`}>
                     {purchase.username}
                   </td>
-                  <td className={`${DataCellClassName}`}>
+                  <td className={`${DataCellClassName} w-1/4`}>
                     {purchase.productName}
                   </td>
-                  <td className={`${DataCellClassName}`}>
+                  <td className={`${DataCellClassName} w-1/6`}>
                     {purchase.productCount}
                   </td>
-                  <td className={`${DataCellClassName}`}>
+                  <td className={`${DataCellClassName} w-1/6`}>
                     ${purchase.purchaseAmount}
                   </td>
-                  <td className={`${DataCellClassName}`}>
+                  <td className={`${DataCellClassName} w-1/6`}>
                     {purchase.deliveryStatus}
                   </td>
-                  <td className={`${DataCellClassName}`}>
+                  <td className={`${DataCellClassName} w-1/6`}>
                     {new Date(purchase.createdAt).toLocaleDateString()}
                   </td>
                 </tr>
               ))
             )}
+            {/* {loading && (
+              <tr>
+                <td colSpan={6} className="text-center py-4">
+                  <div className="animate-spin h-5 w-5 border-2 border-t-cyan-800 rounded-full" />
+                </td>
+              </tr>
+            )} */}
           </tbody>
         </table>
       </div>

@@ -16,7 +16,7 @@ const PurchaseSchema = new Schema<IPurchase>(
     purchaseAmount: { type: Number, required: true, min: 0 },
     deliveryStatus: {
       type: String,
-      enum: ["pending", "shipped", "delivered", "canceled"],
+      enum: ["pending", "shipped", "delivered", "canceled"], // should have made a Enum
       default: "pending",
     },
   },

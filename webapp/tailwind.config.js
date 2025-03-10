@@ -12,6 +12,7 @@ module.exports = {
         primary: "#066666",
       },
       animation: {
+        "fade-in-out": "fadeInOut 3s ease-in-out forwards",
         "bounce-slow": "bounceSlow 8s ease-in-out infinite",
         "delay-2000": "bounceSlow 8s ease-in-out infinite 2s",
         "delay-3000": "bounceSlow 8s ease-in-out infinite 3s",
@@ -20,6 +21,12 @@ module.exports = {
         "delay-6000": "bounceSlow 8s ease-in-out infinite 6s",
       },
       keyframes: {
+        fadeInOut: {
+          "0%": { opacity: "0", transform: "translateY(20px)" },
+          "20%": { opacity: "1", transform: "translateY(0)" },
+          "80%": { opacity: "1", transform: "translateY(0)" },
+          "100%": { opacity: "0", transform: "translateY(20px)" },
+        },
         bounceSlow: {
           "0%, 100%": { transform: "translateY(-20px)" },
           "50%": { transform: "translateY(20px)" },
