@@ -1,4 +1,4 @@
-# My App
+# Spotcheck Assessment
 
 ## Overview
 
@@ -17,8 +17,8 @@ This project is a web application built using React for the frontend and Node.js
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/my-app.git
-   cd my-app
+   git clone https://github.com/ArokyaRoopak/spotcheck-react.git
+   cd spotcheck-react
    ```
 
 2. Install the backend dependencies:
@@ -89,7 +89,7 @@ You can use the following credentials to log in to the application:
 
 ### Seed 
 
-To create sample purchases and   in the database, you can use the `seed.js` script. Follow these steps:
+To create sample purchases and users in the database, you can use the `seed.js` script. Follow these steps:
 
 1. Navigate to the root of your project:
 
